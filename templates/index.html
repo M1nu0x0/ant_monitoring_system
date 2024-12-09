@@ -1,0 +1,175 @@
+{% extends 'base.html' %}
+
+{% block title %}Device Control{% endblock %}
+
+{% block content %}
+<div class="control-header">
+    <div class="checkbox-container">
+        <p>Manual</p>
+        <label class="switch">
+            <input type="checkbox" id="autoSwitch" checked>
+            <span class="slider round"></span>
+        </label>
+        <p>Auto</p>
+    </div>
+</div>
+<div class="control-body">
+    <h1>Device Status</h1>
+    <div class="sensor-grid">
+        <!-- 온도계 -->
+        <div class="sensor" id="sensor-temperature">
+            <h2>온도계</h2>
+            <div class="chart-container">
+                <svg id="temperatureChart"></svg>
+            </div>
+        <p>적정 온도</br>22°C ~ 28°C</p>
+        </div>
+        <!--<p>Temperature: <span id="temperature">--</span>°C</p>-->
+
+        <!-- 환풍기 -->
+        <div class="sensor" id="sensor-fan">
+            <h2>환풍기</h2>
+            <div class="motor-container">
+                <div class="img-container" id="fan-img">
+                    <img
+                        id="fanOuter"
+                        src="/static/images/fan.png"
+                        alt="Fan Outer Frame"
+                        class="fan-outer"
+                    />
+                    <img
+                        id="fanInner"
+                        src="/static/images/fan_inner.png"
+                        alt="Fan Inner Frame"
+                        class="fan-inner"
+                    />
+                </div>
+            </div>
+            <button id="fanToggle" class="btn">Turn On</button>
+        </div>
+
+        <!-- 열선패드 -->
+        <div class="sensor" id="sensor-heatpad">
+            <h2>열선패드</h2>
+            <div class="motor-container">
+                <div class="img-container" id="heat-pad-img" style="--glow-color: rgba(250, 10, 10, 0.8)">
+                    <img
+                        id="heatPad",
+                        src="/static/images/heatpad.png",
+                        alt="Heat Pad"
+                        class="heat-pad"
+                    />
+                    <img
+                        id="heatPadInner",
+                        src="/static/images/heatpad.png",
+                        alt="Heat Pad Inner"
+                        class="heat-pad-inner"
+                    />
+                </div>
+            </div>
+            <button id="heatPadToggle" class="btn">Turn On</button>
+        </div>
+
+        <!-- 습도계 -->
+        <div class="sensor" id="sensor-humidity">
+            <h2>습도계</h2>
+            <div class="chart-container">
+                <svg id="humidityChart"></svg>
+            </div>
+            <!--<p>Humidity: <span id="humidity">--</span>%</p>-->
+            <p>적정 습도</br>50% ~ 70%</p>
+        </div>
+
+        <!-- 습도 모터 -->
+        <div class="sensor" id="sensor-humidity-motor">
+            <h2>습도 모터</h2>
+            <div class="motor-container">
+                <div class="img-container">
+                    <img
+                        id="humidityMotorImg"
+                        src="/static/images/humidity_motor.png"
+                        alt="Humidity Motor"
+                        class="humidity-motor"
+                    />
+                </div>
+            </div>
+            <button id="humidityMotorButton" class="btn">Activate</button>
+        </div>
+
+        <!-- 먹이장 -->
+        <div class="sensor" id="sensor-weight">
+            <h2>먹이장</h2>
+            <div class="img-container" id="food-img">
+                <img
+                    id="foodImg"
+                    src="/static/images/food.png"
+                    alt="Food"
+                    class="food"
+                />
+            </div>
+            <p><span id="food_weight">--</span>g</p>
+        </div>
+
+        <!-- 디스펜서 -->
+        <div class="sensor" id="sensor-dispenser">
+            <h2>디스펜서</h2>
+            <div class="motor-container">
+                <div class="img-container">
+                    <img
+                        id="dispenserImg"
+                        src="/static/images/food.png"
+                        alt="Dispenser"
+                        class="dispenser"
+                    />
+                </div>
+            </div>
+            <button id="foodMotorButton" class="btn">Activate</button>
+        </div>
+
+        <!-- 쓰레기장 -->
+        <div class="sensor" id="sensor-trash">
+            <h2>쓰레기장</h2>
+            <div class="img-container">
+                <img
+                    id="trashImg"
+                    src="/static/images/trash_high.png"
+                    alt="Trash"
+                    class="trash"
+                />
+            </div>
+            <p><span id="trash_weight">--</span>g</p>
+        </div>
+
+        <!-- 워터펌프 -->
+        <div class="sensor" id="sensor-waterpump">
+            <h2>워터펌프</h2>
+            <div class="img-container" id="water-pump-img" style="--glow-color: rgba(10, 50, 250, 0.8)">
+                <img
+                    id="waterPumpImg"
+                    src="/static/images/water_pump.png"
+                    alt="Water Pump"
+                    class="water-pump"
+                />
+                <img
+                    id="waterPumpInner"
+                    src="/static/images/water_pump.png"
+                    alt="Water Pump Inner"
+                    class="water-pump-inner"
+                />
+            </div>
+            <button id="waterPumpButton" class="btn">Activate</button>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/control.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/gaugeChart.css') }}">
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script type="module" src="{{ url_for('static', filename='js/gaugeChart.js') }}"></script>
+<script type="module" src="{{ url_for('static', filename='js/control.js') }}"></script>
+{% endblock %}

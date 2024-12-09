@@ -1,0 +1,42 @@
+{
+    "boards": [
+        {
+            "id": "board2",
+            "name": "OrangeBoard_2",
+            "address": "CB:8E:D0:CE:39:CC",
+            "rx_uuid": "6e400002-b5a3-f393-e0a9-e50e24dcca9e",
+            "tx_uuid": "6e400003-b5a3-f393-e0a9-e50e24dcca9e",
+            "baud_rate": 9600,
+            "data": ["temperature", "fan", "heat_pad"],
+            "commands": {
+                "fan": "COOL",
+                "heat_pad": "HEAT"
+            }
+        },
+        {
+            "id": "board1",
+            "name": "OrangeBoard_1",
+            "address": "D1:86:F8:18:A6:49",
+            "rx_uuid": "6e400002-b5a3-f393-e0a9-e50e24dcca9e",
+            "tx_uuid": "6e400003-b5a3-f393-e0a9-e50e24dcca9e",
+            "baud_rate": 9600,
+            "data": ["trash_weight", "water_pump", "humidity", "humidity_motor"],
+            "commands": {
+                "water_pump": "WATER",
+                "humidity_motor": "HUMIDITY"
+            }
+        },
+        {
+            "id": "board3",
+            "name": "OrangeBoard_3",
+            "address": "E8:03:D9:5B:EC:11",
+            "rx_uuid": "6e400002-b5a3-f393-e0a9-e50e24dcca9e",
+            "tx_uuid": "6e400003-b5a3-f393-e0a9-e50e24dcca9e",
+            "baud_rate": 9600,
+            "data": ["food_weight", "food_motor"],
+            "commands": {
+                "food_motor": "FOOD"
+            }
+        }
+    ]
+}

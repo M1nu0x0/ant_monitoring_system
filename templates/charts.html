@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+
+{% block title %}Charts and Data | Ant-Monitoring System{% endblock %}
+
+{% block content %}
+<h1>Ant-Monitoring System Data</h1>
+
+<!-- 데이터 개수 입력 -->
+<div class="data-control">
+  <label for="data-count-input">Number of Data Points:</label>
+  <input id="data-count-input" type="number" value="20" min="1">
+  <button id="data-count-btn" class="btn">Load Data</button>
+</div>
+
+<div class="toggle-buttons">
+  <button id="table-btn" class="btn">Show Table</button>
+  <button id="chart-btn" class="btn">Show Chart</button>
+</div>
+
+<div id="data-container">
+  <!-- Table Section -->
+  <div id="data-table-container" class="content">
+    <!-- Board Tables -->
+    <div class="table-wrapper">
+      <h2>Board 1</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Timestamp</th>
+            <th>Sensor</th>
+            <th>Value</th>
+          </tr>
+        </thead>
+        <tbody id="board1-table-body">
+          <!-- Board 1 data will be loaded here -->
+        </tbody>
+      </table>
+    </div>
+
+    <div class="table-wrapper">
+      <h2>Board 2</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Timestamp</th>
+            <th>Sensor</th>
+            <th>Value</th>
+          </tr>
+        </thead>
+        <tbody id="board2-table-body">
+          <!-- Board 2 data will be loaded here -->
+        </tbody>
+      </table>
+    </div>
+
+    <div class="table-wrapper">
+      <h2>Board 3</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Timestamp</th>
+            <th>Sensor</th>
+            <th>Value</th>
+          </tr>
+        </thead>
+        <tbody id="board3-table-body">
+          <!-- Board 3 data will be loaded here -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Chart Section -->
+  <div id="data-chart" class="content" style="display: none;">
+    <div id="chart-container">
+      <!-- Graphs will be dynamically added here -->
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/charts.css') }}">
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script type="module" src="{{ url_for('static', filename='js/charts.js') }}"></script>
+{% endblock %}

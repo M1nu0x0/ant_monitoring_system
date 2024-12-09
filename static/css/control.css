@@ -1,0 +1,360 @@
+:root {
+    --breath-min: 10px;
+    --breath-max: 20px;
+    --breath-duration: 3s;
+    --food-size: 100%;
+    --trash-size: 100%;
+}
+
+/* 센서 그리드 */
+.sensor-grid {
+    display: grid;
+    /* justify-self: center; */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    /* grid-template-rows: auto; */
+    gap: 20px;
+    /* max-width: 1200px; */
+    margin: 10 auto;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 센서 박스 */
+.sensor {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: flex-start; */
+    justify-content: space-between;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    box-sizing: border-box;
+    height: auto;
+    min-height: 300px;
+}
+
+/* 센서 제목 */
+.sensor h2 {
+    font-size: 1.5rem;
+    color: #333333;
+    padding-bottom: 1vh;
+    margin: 0;
+}
+
+/* 센서 데이터 */
+.sensor p {
+    font-size: 1.2rem;
+    color: #333333;
+    margin: 0;
+}
+
+/* 버튼 스타일 */
+.btn:not([disabled]) {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: #ffffff;
+    background-color: #0078d4;
+    border: none;
+    border-radius: 5px;
+    margin: 10px 0;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn:not([disabled]):hover {
+    background-color: #005a9e;
+    transform: scale(1.05);
+}
+
+.btn:not([disabled]):active {
+    transform: scale(0.95);
+}
+
+.btn[disabled] {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: #ffffff;
+    background-color: #b3b3b3;
+    border: none;
+    border-radius: 5px;
+    margin: 10px 0;
+    cursor: not-allowed;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn[disabled]:hover {
+    background-color: #b3b3b3;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 56px;
+    height: 24px;
+}
+    
+.switch input {display:none;}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: red;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+    
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: green;
+}
+    
+input:focus + .slider {
+    box-shadow: 0 0 1px green;
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(32px);
+    -ms-transform: translateX(32px);
+    transform: translateX(32px);
+}    
+
+/* gird 내부 컨테이너 */
+.control-header {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+.control-header h1 {
+    display: inline-block;
+    text-align: justify;
+    font-size: 2rem;
+    color: #333333;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.checkbox-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+.motor-container,
+.weight-container {
+    position: relative;
+    width: 100%;
+    max-width: 150px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* sensor 내부 컨테이너 */
+.chart-container {
+    position: relative;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.img-container {
+    position: relative;
+    max-width: 120px;
+    max-height: 120px;
+    margin: 0 auto;
+    text-align: center;
+    overflow: hidden;
+}
+
+.fan-outer {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.fan-inner {
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    width: 80%;
+    height: 80%;
+    z-index: 2;
+    transform-origin: center;
+}
+
+.heat-pad {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+}
+
+.heat-pad-inner {
+    position: absolute;
+    top: 40%;
+    left: 40%;
+    width: 20%;
+    height: 20%;
+    z-index: 1;
+}
+
+.water-pump {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+}
+
+.water-pump-inner {
+    position: absolute;
+    top: 42%;
+    left: 42%;
+    width: 16%;
+    height: 16%;
+    z-index: 1;
+}
+
+.food {
+    position: relative;
+    width: var(--food-size);
+    height: var(--food-size);
+}
+
+.trash {
+    position: relative;
+    width: var(--trash-size);
+    height: var(--trash-size);
+}
+
+.dispenser,
+.humidity-motor {
+    position: relative;
+    width: 70%;
+    height: 70%;
+    top: 0;
+}
+
+#Dispenser,
+#HumidityMotor {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: top 0.5s linear;
+}
+
+/* 회전 애니메이션 */
+@keyframes spin {
+    0% {
+        transform: rotate(360deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+/* 팬 회전 속도 변경 */
+.fan-inner.spin {
+    animation: spin 0.5s linear infinite;
+}
+
+#glow-img {
+    width: 100%;
+    height: auto;
+    transition: box-shadow 0.5s ease;
+}
+
+.glow {
+    animation: breath var(--breath-duration) infinite;
+}
+
+@keyframes breath {
+    0% {
+        box-shadow: 0 0 var(--breath-min) calc(var(--breath-min)/2) var(--glow-color);
+        filter: drop-shadow(0 0 var(--breath-min) var(--glow-color));
+    }
+    50% {
+        box-shadow: 0 0 40px var(--breath-min) var(--glow-color);
+        filter: drop-shadow(0 0 40px var(--glow-color));
+    }
+    100% {
+        box-shadow: 0 0 var(--breath-min) calc(var(--breath-min)/2) var(--glow-color);
+        filter: drop-shadow(0 0 var(--breath-min) var(--glow-color));
+    }
+}
+
+canvas {
+    width: 100%;
+    height: auto;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    margin: 10px 0;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    /* 모바일: 센서 그리드 */
+    .sensor-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* 작은 화면에서 최소 크기 조정 */
+        gap: 15px;
+    }
+
+    /* 모바일: 센서 컨테이너 */
+    .sensor {
+        padding: 15px;
+    }
+
+    /* 모바일: 센서 제목 */
+    .sensor h2 {
+        font-size: 1.2rem;
+    }
+
+    /* 모바일: 버튼 */
+    .btn {
+        font-size: 1.2rem;
+        padding: 12px 25px;
+    }
+}
